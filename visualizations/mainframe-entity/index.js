@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import Screen from '../../components/Screen';
 
 // NOTE: this would be an actual entity and it's relationships between
+// NOTE: this should be rotating, but I ran out of time
 class MainframeEntityVisualization extends React.Component {
   static propTypes = {
     accountId: PropTypes.string,
@@ -50,6 +51,7 @@ class MainframeEntityVisualization extends React.Component {
   }
 
   render() {
+    this.scene.remove.apply(this.scene, this.scene.children);
     this.addCube();
     
     return (
