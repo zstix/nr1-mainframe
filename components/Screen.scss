@@ -30,6 +30,7 @@
   text-shadow: var(--mainframe-shadow-text);
   background-color: var(--mainframe-color-bg-1);
   animation: mainframe-textShadow 0.5s infinite;
+  overflow: hidden;
 
   // might want to remove these
   color: var(--mainframe-color-fg);
