@@ -1,0 +1,65 @@
+@keyframes mainframe-textShadow {
+  0% {
+    text-shadow: var(--mainframe-shadow-text), -0.5px 0 1px var(--mainframe-color-shadow-r);
+  }
+  20% {
+    text-shadow: var(--mainframe-shadow-text), -2px 0 1px var(--mainframe-color-shadow-r);
+  }
+  40%, 60% {
+    text-shadow: var(--mainframe-shadow-text), 0 0 1px var(--mainframe-color-shadow-r);
+  }
+  80% {
+    text-shadow: var(--mainframe-shadow-text), 2px 0 1px var(--mainframe-color-shadow-r);
+  }
+}
+
+.mainframe-Screen {
+  --mainframe-color-fg: lightblue;
+  --mainframe-color-bg-1: rgb(2, 2, 20);
+  --mainframe-color-bg-2: rgba(2, 2, 20, 0.7);
+  --mainframe-color-bg-lines: rgba(60, 60, 80, 0.5);
+  --mainframe-color-shadow: rgb(180, 180, 220);
+  --mainframe-color-shadow-r: rgba(255, 200, 200, 0.3);
+  --mainframe-shadow-text:  0px 0px 20px var(--mainframe-color-shadow);
+
+  position: relative;
+  padding: 0.5em 1em;
+  font-family: 'VT323', monospace;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  text-shadow: var(--mainframe-shadow-text);
+  background-color: var(--mainframe-color-bg-1);
+  animation: mainframe-textShadow 0.5s infinite;
+
+  // might want to remove these
+  color: var(--mainframe-color-fg);
+  width: calc(100% - 2em);
+  height: calc(100% - 1em);
+
+  // might want to turn these into props
+  font-size: 26px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: linear-gradient(transparent 2px, var(--mainframe-color-bg-lines) 2px, transparent 3px);
+    background-size: 100% 3px;
+  }
+
+  &::after {
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent 70%, var(--mainframe-color-bg-2));
+  }
+}

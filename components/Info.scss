@@ -1,0 +1,22 @@
+.mainframe-Info {
+  --mainframe-color-red: rgba(220, 100, 120);
+
+  position: absolute;
+  padding: 0.5em 1em;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid;
+  animation: none;
+
+  &.color-blue {
+    color: var(--mainframe-color-fg);
+    border-color: var(--mainframe-color-fg);
+  }
+
+  &.color-red {
+    color: var(--mainframe-color-red);
+    border-color: var(--mainframe-color-red);
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "mainframe-launcher",
+    "displayName": "MainframeLauncher",
+    "description": "Describe me",
+    "rootNerdletId": "mainframe-nerdlet"
+}
