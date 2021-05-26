@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NrqlQuery, AutoSizer } from 'nr1';
 
+import { stringifyResults } from './utils';
 import Screen from '../../components/Screen';
 import Info from '../../components/Info';
+import Type from '../../components/Type';
 
-const MainframeLogsVisualization = ({ nrqlQueries }) => {
-  const nrqlQueryPropsAvailable =
-	nrqlQueries &&
-	nrqlQueries[0] &&
-	nrqlQueries[0].accountId &&
-	nrqlQueries[0].query;
-
-  if (!nrqlQueryPropsAvailable) {
+const MainframeLogsVisualization = ({ accountId, query }) => {
+  if (!accountId || !query) {
     return (
       <Screen>
 	<p>Awaiting input...</p>
@@ -26,17 +22,26 @@ const MainframeLogsVisualization = ({ nrqlQueries }) => {
       {({width, height}) => (
 	<Screen>
 	  <NrqlQuery
-	    query={nrqlQueries[0].query}
-	    accountId={parseInt(nrqlQueries[0].accountId)}
+	    query={query}
+	    accountId={parseInt(accountId)}
 	    pollInterval={NrqlQuery.AUTO_POLL_INTERVAL}
 	  >
 	    {({data, loading, error}) => {
-	      if (loading) return <Info>Loading...</Info>;
-	      if (error) return <Info color="red">Critical system failure</Info>;
+	      if (loading) {
+		return <Info>Loading...</Info>;
+	      }
 
-	      return (
-		<p>Data recieved</p>
-	      );
+	      if (error || !data.length || !data[0].data) {
+		return (
+		  <Info color={Info.COLORS.RED}>
+		    Critical system failure
+		  </Info>
+		);
+	      }
+
+	      const results = data[0].data;
+
+	      return <Type text={stringifyResults(results)} />;
 	    }}
 	  </NrqlQuery>
 	</Screen>
@@ -46,12 +51,8 @@ const MainframeLogsVisualization = ({ nrqlQueries }) => {
 };
 
 MainframeLogsVisualization.propTypes = {
-  nrqlQueries: PropTypes.arrayOf(
-    PropTypes.shape({
-      accountId: PropTypes.number,
-      query: PropTypes.string,
-    })
-  ),
+  accountId: PropTypes.number,
+  query: PropTypes.string,
 };
 
 export default MainframeLogsVisualization;
