@@ -1,0 +1,20 @@
+{
+  "schemaType": "VISUALIZATION",
+  "id": "mainframe-entity",
+  "displayName": "MainframeEntity",
+  "description": "A pretty display for an entity and it's relationships",
+  "configuration": [
+    {
+      "name": "accountId",
+      "title": "Account ID",
+      "description": "Account ID to be associated with the query",
+      "type": "account-id"
+    },
+    {
+      "name": "entityGuid",
+      "title": "Entity GUID",
+      "description": "The GUID for the entity you would like to display",
+      "type": "string"
+    }
+  ]
+}
