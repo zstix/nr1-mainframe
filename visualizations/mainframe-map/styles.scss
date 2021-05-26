@@ -1,0 +1,20 @@
+@import '../../components/Screen.scss';
+@import '../../components/Info.scss';
+
+.mainframe-map img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mainframe-map-point {
+  width: 4px;
+  height: 4px;
+  border: 1px solid rgb(220, 100, 120);
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+}

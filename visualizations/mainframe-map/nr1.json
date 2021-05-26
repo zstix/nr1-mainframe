@@ -1,8 +1,8 @@
 {
   "schemaType": "VISUALIZATION",
-  "id": "mainframe-logs",
-  "displayName": "MainframeLogs",
-  "description": "Display the results of query that produce tabular results.",
+  "id": "mainframe-map",
+  "displayName": "MainframeMap",
+  "description": "Display the results of a query on a map (lat, long)",
   "configuration": [
     {
       "name": "accountId",
